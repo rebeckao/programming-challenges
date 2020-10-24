@@ -22,12 +22,13 @@ class Lesson03TimeComplexity {
     }
 
     fun minimalDifference(A: IntArray): Int {
-        var sumBefore = 0
-        var sumAfter = A.sum()
-        var minimalDifference = abs(sumAfter) //glömde först abs här
-        for (value in A) {
-            sumBefore += value
-            sumAfter -= value
+        var sumBefore = A[0]
+        var sumAfter = A.sum() - sumBefore
+        var minimalDifference = abs(sumAfter - sumBefore)
+        val numberOfElements = A.size
+        for (i in 1 until numberOfElements) {
+            sumBefore += A[i]
+            sumAfter -= A[i]
             val currentDifference = abs(sumBefore - sumAfter)
             if (currentDifference < minimalDifference) {
                 minimalDifference = currentDifference
