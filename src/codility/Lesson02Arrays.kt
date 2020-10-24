@@ -11,8 +11,24 @@ class Lesson02Arrays {
         return newArray
     }
 
-    // För långsam och hade fel på en uppgift!
     fun findLoneliestNumber(A: IntArray): Int {
-        return A.groupBy { it }.minByOrNull { it.value.size }?.key ?: 0
+        val occurrences = HashMap<Int, Int>()
+        for (element in A) {
+            occurrences[element] = occurrences.getOrDefault(element, 0) + 1
+        }
+        for (occurrence in occurrences.entries) {
+            if (occurrence.value % 2 != 0) {
+                return occurrence.key
+            }
+        }
+        return -1
+    }
+
+    fun findLoneliestNumberStupid(A: IntArray): Int {
+        var result = 0
+        for (element in A) {
+           result = result.xor(element)
+        }
+        return result
     }
 }
