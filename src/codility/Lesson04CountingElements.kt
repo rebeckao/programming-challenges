@@ -1,5 +1,7 @@
 package codility
 
+import java.util.Collections.max
+
 class Lesson04CountingElements {
     fun earliestPath(pathLength: Int, leaves: IntArray): Int {
         val toBeCovered = BooleanArray(pathLength)
@@ -39,7 +41,7 @@ class Lesson04CountingElements {
     }
 
     fun smallestIntNotOccurring(ints: IntArray): Int {
-        val occurrences = BooleanArray(ints.size + 2)
+        val occurrences = BooleanArray(1_000_001)
         occurrences[0] = true
         for (i in ints) {
             if (i > 0) {

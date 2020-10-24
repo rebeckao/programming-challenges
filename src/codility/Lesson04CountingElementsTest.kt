@@ -41,7 +41,8 @@ internal class Lesson04CountingElementsTest {
         "-1, -3; 1",
         "-1, -2, 0, 1, 3; 2",
         "0; 1",
-        "-1; 1"
+        "-1; 1",
+        "1000000; 1"
     ], delimiter = ';')
     fun smallestIntNotOccurring(ints: String, expected: Int) {
         assertEquals(expected, Lesson04CountingElements().smallestIntNotOccurring(Util().toIntArray(ints)))
