@@ -48,4 +48,22 @@ class Lesson07StacksAndQueues {
         return survivingFish
     }
 
+    fun isProperlyNestedRegularParentheses(nestedString: String): Int {
+        val openingParentheses = Stack<Char>()
+        for (parenthesis in nestedString) {
+            if (parenthesis == '(') {
+                openingParentheses.add(parenthesis)
+            } else {
+                if (openingParentheses.isEmpty()) {
+                    return 0
+                }
+                val matchingOpening = openingParentheses.pop()
+                if (!(parenthesis == ')' && matchingOpening == '(')) {
+                    return 0
+                }
+            }
+        }
+        return if (openingParentheses.isEmpty()) 1 else 0
+    }
+
 }

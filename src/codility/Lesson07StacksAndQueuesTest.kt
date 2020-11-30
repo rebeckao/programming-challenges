@@ -37,4 +37,24 @@ internal class Lesson07StacksAndQueuesTest {
     fun numberOfSurvivingFish(sizes: String, directions: String, expected: Int) {
         assertEquals(expected, Lesson07StacksAndQueues().numberOfSurvivingFish(Util().toIntArray(sizes), Util().toIntArray(directions)))
     }
+
+    @ParameterizedTest
+    @CsvSource(value = [
+        "(()()); 1",
+        "(()(())()); 1",
+        "(); 1",
+        ")(; 0",
+        "); 0",
+        "(; 0",
+        "()); 0",
+        "((()(())()))(); 0"
+    ], delimiter = ';')
+    fun isProperlyNestedRegularParentheses(nestedString : String, expected: Int) {
+        assertEquals(expected, Lesson07StacksAndQueues().isProperlyNestedRegularParentheses(nestedString))
+    }
+
+    @Test
+    fun isProperlyNestedRegularParentheses() {
+        assertEquals(1, Lesson07StacksAndQueues().isProperlyNestedRegularParentheses(""))
+    }
 }
