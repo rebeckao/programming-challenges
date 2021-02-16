@@ -1,7 +1,7 @@
 package drunkardswalk
 
 import java.lang.Integer.max
-import java.util.stream.Collectors.*
+import java.util.stream.Collectors.groupingBy
 import kotlin.math.roundToInt
 import kotlin.random.Random
 
@@ -16,8 +16,8 @@ class MovieGoers {
 
     fun printHistogram(histogram: Map<Int, Int>) {
         val max = histogram.keys.maxOrNull() ?: 0
-        for (i in 0 .. max) {
-            print("${i.toString().padStart(4, ' ')}:${"".padStart(histogram.getOrDefault(i, 0)/10, 'I')}\n")
+        for (i in 0..max) {
+            print("${i.toString().padStart(4, ' ')}:${"".padStart(histogram.getOrDefault(i, 0) / 10, 'I')}\n")
         }
     }
 
@@ -26,7 +26,7 @@ class MovieGoers {
             .map { numberOfChangesOfTheLead(20_000) }
     }
 
-    private fun numberOfChangesOfTheLead(numberOfMovieGoers: Int) : Int {
+    private fun numberOfChangesOfTheLead(numberOfMovieGoers: Int): Int {
         val movieGoers = intArrayOf(0, 0)
         var movieInTheLead = flipCoin()
         var changesInTheLead = 0
@@ -46,7 +46,7 @@ class MovieGoers {
             .map { percentageOfTimeSpentInLead(20_000) }
     }
 
-    private fun percentageOfTimeSpentInLead(numberOfMovieGoers: Int) : Int {
+    private fun percentageOfTimeSpentInLead(numberOfMovieGoers: Int): Int {
         val movieGoers = intArrayOf(0, 0)
         val timeInTheLead = intArrayOf(0, 0)
         var movieInTheLead = flipCoin()
@@ -60,7 +60,7 @@ class MovieGoers {
             timeInTheLead[movieInTheLead]++
         }
         val mostTimeInTheLead = max(timeInTheLead[0], timeInTheLead[1])
-        return (mostTimeInTheLead * 10.0/numberOfMovieGoers).roundToInt()
+        return (mostTimeInTheLead * 10.0 / numberOfMovieGoers).roundToInt()
     }
 
     private fun flipCoin(): Int {
